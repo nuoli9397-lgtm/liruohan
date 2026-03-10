@@ -9,10 +9,13 @@
       content="李若涵｜安徽大学计算机系｜产品运营 × AI 应用。科大讯飞产品运营助理实习、中国机器人大赛一等奖、跨境电商 AI 答疑助手（右下角可体验）。"
     />
     <meta property="og:title" content="李若涵｜个人主页" />
-    <meta property="og:description" content="产品运营 × AI 应用：案例、经历与右下角实时聊天 Demo。" />
+    <meta
+      property="og:description"
+      content="产品运营 × AI 应用：案例、经历与右下角实时聊天 Demo。"
+    />
     <meta property="og:type" content="website" />
     <meta name="theme-color" content="#F7F9FF" />
-    <link rel="icon" href="./favicon.svg" />
+    <link rel="icon" href="favicon.svg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -29,10 +32,12 @@
         --muted: rgba(16, 24, 40, 0.62);
         --line: rgba(16, 24, 40, 0.12);
         --panel: rgba(255, 255, 255, 0.78);
-        --a1: #7dd3fc;
-        --a2: #a78bfa;
+        --panel2: rgba(255, 255, 255, 0.58);
+        --a1: #7dd3fc; /* 淡蓝 */
+        --a2: #a78bfa; /* 淡紫 */
         --shadow: 0 18px 55px rgba(16, 24, 40, 0.12);
       }
+
       * { box-sizing: border-box; }
       html, body { height: 100%; }
       body {
@@ -41,8 +46,9 @@
           "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
         color: var(--text);
         background:
-          radial-gradient(900px 520px at 18% 10%, rgba(125, 211, 252, 0.26), transparent 64%),
-          radial-gradient(860px 520px at 84% 14%, rgba(167, 139, 250, 0.22), transparent 62%),
+          radial-gradient(980px 540px at 18% 10%, rgba(125, 211, 252, 0.32), transparent 62%),
+          radial-gradient(900px 560px at 84% 14%, rgba(167, 139, 250, 0.26), transparent 60%),
+          radial-gradient(1100px 680px at 50% 96%, rgba(125, 211, 252, 0.14), transparent 55%),
           linear-gradient(180deg, var(--bg0), var(--bg1));
       }
       body::before {
@@ -55,116 +61,349 @@
           radial-gradient(1px 1px at 78% 34%, rgba(16, 24, 40, 0.06), transparent 60%),
           radial-gradient(1px 1px at 44% 66%, rgba(16, 24, 40, 0.06), transparent 60%),
           radial-gradient(1px 1px at 65% 78%, rgba(16, 24, 40, 0.05), transparent 60%);
-        opacity: 0.18;
+        opacity: 0.28;
+        mix-blend-mode: multiply;
       }
+
       a { color: inherit; text-decoration: none; }
       strong { font-weight: 800; }
-      .container { width: min(1080px, calc(100% - 40px)); margin: 0 auto; }
+
+      .container {
+        width: min(1080px, calc(100% - 40px));
+        margin: 0 auto;
+      }
 
       .nav {
         position: sticky;
         top: 0;
         z-index: 20;
         padding: 16px 0;
-        background: rgba(255, 255, 255, 0.90);
+        backdrop-filter: blur(12px);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0));
         border-bottom: 1px solid rgba(16, 24, 40, 0.08);
       }
-      .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
-      .brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+      }
       .mark {
-        width: 32px; height: 32px; border-radius: 12px;
+        width: 32px;
+        height: 32px;
+        border-radius: 12px;
         border: 1px solid rgba(16, 24, 40, 0.10);
-        background: rgba(255, 255, 255, 0.80);
+        background: rgba(255, 255, 255, 0.75);
         box-shadow: 0 12px 28px rgba(16, 24, 40, 0.10);
-        position: relative; overflow: hidden;
+        position: relative;
+        overflow: hidden;
       }
       .mark::after {
         content: "";
-        position: absolute; inset: -40%;
+        position: absolute;
+        inset: -40%;
         background:
           radial-gradient(circle at 30% 30%, rgba(125, 211, 252, 0.85), rgba(125, 211, 252, 0) 60%),
           radial-gradient(circle at 75% 45%, rgba(167, 139, 250, 0.65), rgba(167, 139, 250, 0) 60%);
         transform: rotate(18deg);
-        opacity: 0.80;
+        opacity: 0.75;
       }
-      .brand-title { display: grid; gap: 1px; min-width: 0; }
-      .brand-title strong { font-weight: 800; letter-spacing: 0.2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-      .brand-title span { font-size: 12px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-      .nav-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+      .brand-title {
+        display: grid;
+        gap: 1px;
+        min-width: 0;
+      }
+      .brand-title strong {
+        font-weight: 800;
+        letter-spacing: 0.2px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .brand-title span {
+        font-size: 12px;
+        color: var(--muted);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+      }
       .chip {
-        display: inline-flex; align-items: center; gap: 8px;
-        padding: 7px 10px; border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 10px;
+        border-radius: 999px;
         border: 1px solid rgba(16, 24, 40, 0.12);
         background: rgba(255, 255, 255, 0.72);
         color: rgba(16, 24, 40, 0.88);
         font-size: 12px;
         transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
       }
-      .chip:hover { transform: translateY(-1px); background: rgba(255, 255, 255, 0.90); border-color: rgba(16, 24, 40, 0.18); }
-      .chip.primary { border-color: rgba(125, 211, 252, 0.55); background: linear-gradient(180deg, rgba(125, 211, 252, 0.30), rgba(167, 139, 250, 0.18)); }
+      .chip:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.90);
+        border-color: rgba(16, 24, 40, 0.18);
+      }
+      .chip.primary {
+        border-color: rgba(125, 211, 252, 0.55);
+        background: linear-gradient(180deg, rgba(125, 211, 252, 0.30), rgba(167, 139, 250, 0.18));
+      }
 
-      .hero { position: relative; margin: 44px 0 0; padding: 34px 0 26px; }
-      .watermark { position: absolute; inset: -16px 0 auto 0; display: grid; place-items: center; pointer-events: none; opacity: 0.24; }
+      .hero {
+        position: relative;
+        margin: 44px 0 0;
+        padding: 34px 0 26px;
+      }
+      .watermark {
+        position: absolute;
+        inset: -16px 0 auto 0;
+        display: grid;
+        place-items: center;
+        pointer-events: none;
+        opacity: 0.24;
+      }
       .watermark span {
-        font-weight: 800; letter-spacing: -0.03em; line-height: 1;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1;
         font-size: min(22vw, 220px);
         background-image: radial-gradient(rgba(16, 24, 40, 0.18) 1px, transparent 1.7px);
         background-size: 7px 7px;
-        -webkit-background-clip: text; background-clip: text;
+        -webkit-background-clip: text;
+        background-clip: text;
         color: transparent;
         text-shadow: 0 0 24px rgba(125, 211, 252, 0.12);
       }
-      .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 20px; align-items: start; }
-      @media (max-width: 920px) { .hero-grid { grid-template-columns: 1fr; } }
-      .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; color: rgba(16, 24, 40, 0.62); letter-spacing: 0.18em; text-transform: uppercase; }
-      .dot { width: 9px; height: 9px; border-radius: 999px; background: linear-gradient(180deg, var(--a1), var(--a2)); box-shadow: 0 0 0 4px rgba(125, 211, 252, 0.18); }
-      .title { margin: 14px 0 10px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.06; font-size: 46px; }
-      @media (max-width: 520px) { .title { font-size: 34px; } }
-      .subtitle { margin: 0; color: rgba(16, 24, 40, 0.70); line-height: 1.75; font-size: 14px; max-width: 72ch; }
-      .cta { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+      .hero-grid {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1.25fr 0.75fr;
+        gap: 20px;
+        align-items: start;
+      }
+      @media (max-width: 920px) {
+        .hero-grid { grid-template-columns: 1fr; }
+      }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 12px;
+        color: rgba(16, 24, 40, 0.62);
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+      .dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 999px;
+        background: linear-gradient(180deg, var(--a1), var(--a2));
+        box-shadow: 0 0 0 4px rgba(125, 211, 252, 0.18);
+      }
+      .title {
+        margin: 14px 0 10px;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1.06;
+        font-size: 46px;
+      }
+      @media (max-width: 520px) {
+        .title { font-size: 34px; }
+      }
+      .subtitle {
+        margin: 0;
+        color: rgba(16, 24, 40, 0.70);
+        line-height: 1.75;
+        font-size: 14px;
+        max-width: 72ch;
+      }
+      .cta {
+        margin-top: 18px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+      }
       .btn {
-        display: inline-flex; align-items: center; justify-content: center;
-        padding: 10px 12px; border-radius: 14px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 12px;
+        border-radius: 14px;
         border: 1px solid rgba(16, 24, 40, 0.12);
         background: rgba(255, 255, 255, 0.76);
         color: rgba(16, 24, 40, 0.88);
-        font-weight: 600; font-size: 13px;
+        font-weight: 600;
+        font-size: 13px;
         transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
       }
-      .btn:hover { transform: translateY(-1px); background: rgba(255, 255, 255, 0.92); border-color: rgba(16, 24, 40, 0.18); }
-      .btn.primary { border-color: rgba(125, 211, 252, 0.55); background: linear-gradient(180deg, rgba(125, 211, 252, 0.55), rgba(167, 139, 250, 0.40)); box-shadow: 0 18px 52px rgba(125, 211, 252, 0.16); }
+      .btn:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.92);
+        border-color: rgba(16, 24, 40, 0.18);
+      }
+      .btn.primary {
+        color: rgba(16, 24, 40, 0.92);
+        border-color: rgba(125, 211, 252, 0.55);
+        background: linear-gradient(180deg, rgba(125, 211, 252, 0.55), rgba(167, 139, 250, 0.40));
+        box-shadow: 0 18px 52px rgba(125, 211, 252, 0.16);
+      }
 
-      .stats { border: 1px solid rgba(16, 24, 40, 0.10); border-radius: 18px; background: rgba(255, 255, 255, 0.78); box-shadow: var(--shadow); overflow: hidden; }
-      .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); }
-      @media (max-width: 920px) { .stats-row { grid-template-columns: repeat(2, 1fr); } }
-      @media (max-width: 520px) { .stats-row { grid-template-columns: 1fr; } }
-      .stat { padding: 16px 16px; border-right: 1px solid rgba(16, 24, 40, 0.08); }
+      .stats {
+        border: 1px solid rgba(16, 24, 40, 0.10);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.78);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+      .stats-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      }
+      @media (max-width: 920px) {
+        .stats-row { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (max-width: 520px) {
+        .stats-row { grid-template-columns: 1fr; }
+      }
+      .stat {
+        padding: 16px 16px;
+        border-right: 1px solid rgba(16, 24, 40, 0.08);
+      }
       .stat:last-child { border-right: 0; }
-      .stat strong { display: block; font-size: 18px; letter-spacing: -0.02em; }
-      .stat span { display: block; margin-top: 8px; color: rgba(16, 24, 40, 0.62); font-size: 12px; line-height: 1.55; }
+      .stat strong {
+        display: block;
+        font-size: 18px;
+        letter-spacing: -0.02em;
+      }
+      .stat span {
+        display: block;
+        margin-top: 8px;
+        color: rgba(16, 24, 40, 0.62);
+        font-size: 12px;
+        line-height: 1.55;
+      }
 
-      .section { margin-top: 54px; padding-top: 6px; }
-      .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; margin-bottom: 14px; }
-      .section-head h2 { margin: 0; font-size: 14px; letter-spacing: 0.20em; text-transform: uppercase; color: rgba(16, 24, 40, 0.66); }
-      .section-head p { margin: 0; color: rgba(16, 24, 40, 0.56); font-size: 12px; }
-      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-      @media (max-width: 920px) { .grid { grid-template-columns: 1fr; } }
-      .card { border: 1px solid rgba(16, 24, 40, 0.10); border-radius: 18px; background: rgba(255, 255, 255, 0.78); padding: 18px 18px; box-shadow: 0 18px 48px rgba(16, 24, 40, 0.10); }
-      .card h3 { margin: 0; font-size: 16px; letter-spacing: -0.01em; }
-      .meta { margin-top: 6px; color: rgba(16, 24, 40, 0.56); font-size: 12px; }
-      .list { margin: 12px 0 0; padding-left: 18px; color: rgba(16, 24, 40, 0.78); }
-      .list li { margin: 8px 0; line-height: 1.65; }
-      .tags { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
-      .tag { padding: 7px 10px; border-radius: 999px; border: 1px solid rgba(16, 24, 40, 0.10); background: linear-gradient(180deg, rgba(125, 211, 252, 0.14), rgba(167, 139, 250, 0.10)); color: rgba(16, 24, 40, 0.76); font-size: 12px; }
+      .section {
+        margin-top: 54px;
+        padding-top: 6px;
+      }
+      .section-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 14px;
+        margin-bottom: 14px;
+      }
+      .section-head h2 {
+        margin: 0;
+        font-size: 14px;
+        letter-spacing: 0.20em;
+        text-transform: uppercase;
+        color: rgba(16, 24, 40, 0.66);
+      }
+      .section-head p {
+        margin: 0;
+        color: rgba(16, 24, 40, 0.56);
+        font-size: 12px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      @media (max-width: 920px) {
+        .grid { grid-template-columns: 1fr; }
+      }
+      .card {
+        border: 1px solid rgba(16, 24, 40, 0.10);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.78);
+        padding: 18px 18px;
+        box-shadow: 0 18px 48px rgba(16, 24, 40, 0.10);
+      }
+      .card h3 {
+        margin: 0;
+        font-size: 16px;
+        letter-spacing: -0.01em;
+      }
+      .meta {
+        margin-top: 6px;
+        color: rgba(16, 24, 40, 0.56);
+        font-size: 12px;
+      }
+      .list {
+        margin: 12px 0 0;
+        padding-left: 18px;
+        color: rgba(16, 24, 40, 0.78);
+      }
+      .list li {
+        margin: 8px 0;
+        line-height: 1.65;
+      }
+      .tags {
+        margin-top: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .tag {
+        padding: 7px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(16, 24, 40, 0.10);
+        background: linear-gradient(180deg, rgba(125, 211, 252, 0.14), rgba(167, 139, 250, 0.10));
+        color: rgba(16, 24, 40, 0.76);
+        font-size: 12px;
+      }
 
-      .faq { margin-top: 12px; display: grid; gap: 10px; }
-      details { border: 1px solid rgba(16, 24, 40, 0.10); border-radius: 14px; background: rgba(255, 255, 255, 0.72); padding: 12px 12px; }
-      summary { cursor: pointer; list-style: none; font-weight: 600; color: rgba(16, 24, 40, 0.86); }
+      .faq {
+        margin-top: 12px;
+        display: grid;
+        gap: 10px;
+      }
+      details {
+        border: 1px solid rgba(16, 24, 40, 0.10);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.72);
+        padding: 12px 12px;
+      }
+      summary {
+        cursor: pointer;
+        list-style: none;
+        font-weight: 600;
+        color: rgba(16, 24, 40, 0.86);
+      }
       summary::-webkit-details-marker { display: none; }
-      details p { margin: 10px 0 0; color: rgba(16, 24, 40, 0.70); line-height: 1.7; font-size: 13px; }
+      details p {
+        margin: 10px 0 0;
+        color: rgba(16, 24, 40, 0.70);
+        line-height: 1.7;
+        font-size: 13px;
+      }
 
-      footer { margin: 54px 0 28px; color: rgba(16, 24, 40, 0.52); font-size: 12px; text-align: center; }
-      @media (prefers-reduced-motion: reduce) { .chip, .btn { transition: none; } }
+      footer {
+        margin: 54px 0 28px;
+        color: rgba(16, 24, 40, 0.52);
+        font-size: 12px;
+        text-align: center;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .chip, .btn { transition: none; }
+      }
     </style>
   </head>
   <body>
@@ -181,7 +420,7 @@
           <a class="chip" href="#cases">案例</a>
           <a class="chip" href="#experience">经历</a>
           <a class="chip" href="#highlights">亮点</a>
-          <a class="chip primary" href="#chat" data-open-chat="1">右下角聊天</a>
+          <a class="chip primary" href="#chat">右下角聊天</a>
         </div>
       </div>
     </div>
@@ -196,27 +435,43 @@
             <div class="title">把复杂问题<br />做成可落地的产品与体验</div>
             <p class="subtitle">
               我关注<strong>产品运营</strong>、<strong>用户洞察</strong>、<strong>数据分析</strong>与<strong>AI 应用落地</strong>。
+              
             </p>
             <div class="cta">
               <a class="btn primary" href="#cases">查看案例</a>
               <a class="btn" href="#experience">查看经历</a>
-              <a class="btn" href="#chat" data-open-chat="1">打开聊天</a>
+              <a class="btn" href="#chat">打开聊天</a>
             </div>
           </div>
 
           <div class="stats" aria-label="Stats">
             <div class="stats-row">
-              <div class="stat"><strong>20000+</strong><span>用户交互日志标注/筛选</span></div>
-              <div class="stat"><strong>200+</strong><span>有效反馈沉淀为台账闭环</span></div>
-              <div class="stat"><strong>10+</strong><span>可落地的体验与回复优化建议</span></div>
-              <div class="stat"><strong>1 个</strong><span>跨境电商 AI 答疑助手（可体验）</span></div>
+              <div class="stat">
+                <strong>20000+</strong>
+                <span>用户交互日志标注/筛选</span>
+              </div>
+              <div class="stat">
+                <strong>200+</strong>
+                <span>有效反馈沉淀为台账闭环</span>
+              </div>
+              <div class="stat">
+                <strong>10+</strong>
+                <span>可落地的体验与回复优化建议</span>
+              </div>
+              <div class="stat">
+                <strong>1 个</strong>
+                <span>跨境电商 AI 答疑助手（可体验）</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       <section class="section" id="cases">
-        <div class="section-head"><h2>Case Studies</h2><p>不堆砌信息，只展示核心</p></div>
+        <div class="section-head">
+          <h2>Case Studies</h2>
+          <p>不堆砌信息，只展示核心</p>
+        </div>
         <div class="grid">
           <article class="card">
             <h3>跨境电商 AI 答疑助手</h3>
@@ -227,7 +482,10 @@
               <li>适合作品展示：让面试官直接用对话体验你的交付物。</li>
             </ul>
             <div class="tags">
-              <span class="tag">对话式交互</span><span class="tag">知识问答</span><span class="tag">体验设计</span><span class="tag">AI 应用落地</span>
+              <span class="tag">对话式交互</span>
+              <span class="tag">知识问答</span>
+              <span class="tag">体验设计</span>
+              <span class="tag">AI 应用落地</span>
             </div>
           </article>
 
@@ -239,13 +497,20 @@
               <li>用数据做<strong>优先级</strong>：频次、影响面、修复成本三维排序。</li>
               <li>用节奏保证<strong>落地</strong>：评审对齐 → 排期推进 → 上线验证 → 闭环复盘。</li>
             </ul>
-            <div class="tags"><span class="tag">问题治理</span><span class="tag">数据驱动</span><span class="tag">跨团队推进</span></div>
+            <div class="tags">
+              <span class="tag">问题治理</span>
+              <span class="tag">数据驱动</span>
+              <span class="tag">跨团队推进</span>
+            </div>
           </article>
         </div>
       </section>
 
       <section class="section" id="experience">
-        <div class="section-head"><h2>Experience</h2><p>用结果讲故事</p></div>
+        <div class="section-head">
+          <h2>Experience</h2>
+          <p>用结果讲故事</p>
+        </div>
         <div class="grid">
           <article class="card">
             <h3>科大讯飞｜产品运营助理</h3>
@@ -256,126 +521,101 @@
               <li>数据与落地：SQL 多表联查结合用户画像做分组统计分析；参与 Prompt 工程优化与评审推进，跟踪排期与上线结果。</li>
             </ul>
             <div class="tags">
-              <span class="tag">竞品分析</span><span class="tag">用户研究</span><span class="tag">SQL 分析</span><span class="tag">Prompt 优化</span><span class="tag">推进落地</span>
+              <span class="tag">竞品分析</span>
+              <span class="tag">用户研究</span>
+              <span class="tag">SQL 分析</span>
+              <span class="tag">Prompt 优化</span>
+              <span class="tag">推进落地</span>
             </div>
           </article>
 
           <article class="card" id="highlights">
             <h3>中国机器人大赛一等奖</h3>
             <div class="meta">竞赛荣誉</div>
-            <ul class="list"> <li>该项目使用 linux 系统，基于 C++ 实现了服务机器人在仿真环境下的自主决策系统，涵盖移动、抓取、容器操作等 9 种原子行动。</li>
-              <li>通过仿真测试优化交互逻辑提升系统响应效率和用户操作便捷性，设计了重规划算法，主要包括人机交互、自动规划、环境感知和路径规划。</li></ul>
-            <div class="tags"><span class="tag">工程落地</span><span class="tag">团队协作</span><span class="tag">快速迭代</span></div>
+            <ul class="list">
+              <li>该项目使用 linux 系统，基于 C++ 实现了服务机器人在仿真环境下的自主决策系统，涵盖移动、抓取、容器操作等 9 种原子行动。</li>
+              <li>通过仿真测试优化交互逻辑提升系统响应效率和用户操作便捷性，设计了重规划算法，主要包括人机交互、自动规划、环境感知和路径规划。</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">工程落地</span>
+              <span class="tag">团队协作</span>
+              <span class="tag">快速迭代</span>
+            </div>
           </article>
         </div>
       </section>
 
       <section class="section" id="chat">
-        <div class="section-head"><h2>Live Demo</h2><p>右下角可直接体验</p></div>
+        <div class="section-head">
+          <h2>Live Demo</h2>
+          <p>右下角可直接体验</p>
+        </div>
         <div class="grid">
           <article class="card">
             <h3>右下角聊天（Coze）</h3>
             <div class="meta">跨境电商 AI 答疑助手 · 实时对话</div>
             <ul class="list">
               <li>点击页面<strong>右下角气泡</strong>即可打开对话。</li>
-              <li>首次打开会弹窗输入 PAT token（仅保存在本机浏览器 `localStorage`）。</li>
+              <li>除了跨境电商知识答疑，ask me anything！</li>
             </ul>
           </article>
+
           <article class="card">
             <h3>FAQ</h3>
-            <div class="meta">这是静态导出版，先看排版与风格</div>
+            <div class="meta">高频问题回答</div>
             <div class="faq">
               <details>
-                <summary>如何本地预览？</summary>
-                <p>推荐用本地小服务器预览（见 README）。</p>
+                <summary>计算机背景为什么想做ai pm？</summary>
+                <p>技术背景让我理解ai，更能懂ai的底层逻辑，我在做出好的idea的同时也想了解用户的想法，希望通过用户的使用感受来得到正向反馈。</p>
               </details>
               <details>
-                <summary>如何清除 token？</summary>
-                <p>控制台执行 `localStorage.removeItem("COZE_PAT_TOKEN")` 然后刷新即可。</p>
+                <summary>专业技能</summary>
+                <p>技能：熟悉LLM、RAG、NLP等领域，理解大模型并熟练使⽤Figma、sql、Axure、MySQL，熟练使用Excel等办公软件
+                  语言：英语（CET-6：504），普通话（二级甲等：90.5），德语（A2）</p>
+              </details>
+              <details>
+                <summary>自我评价</summary>
+                <p>性格开朗，做事细心，具有良好的学习能力，愿意主动学习；能吃苦耐劳，抗压能力强，善于面对挑战；具备良好的沟通表达和组织协调能力；具有良好的文字表达能力，能够独立处理工作任务，做事认真负责，善于团队合作。</p>
               </details>
             </div>
           </article>
         </div>
       </section>
 
-      <footer>© <span id="y"></span> 李若涵｜完整静态网页（public 导出）</footer>
+      <footer>© <span id="y"></span> 李若涵｜联系方式：3591455865@qq.com</footer>
     </main>
 
     <script>
       document.getElementById("y").textContent = String(new Date().getFullYear());
     </script>
 
+    <!-- Coze Chat Bubble (右下角) -->
+    <script src="https://lf-cdn.coze.cn/obj/unpkg/flow-platform/chat-app-sdk/1.2.0-beta.19/libs/cn/index.js"></script>
     <script>
-      (function () {
-        var BOT_ID = "7614511644510765066";
-        var SDK_SRC =
-          "https://lf-cdn.coze.cn/obj/unpkg/flow-platform/chat-app-sdk/1.2.0-beta.19/libs/cn/index.js";
-        var client = null;
-        var loading = false;
-
-        function getToken(promptIfMissing) {
-          var key = "COZE_PAT_TOKEN";
-          var t = "";
-          try {
-            t = localStorage.getItem(key) || "";
-          } catch (e) {}
-          if (!t && promptIfMissing) {
-            t = window.prompt("请输入 Coze PAT Token（仅保存在本机浏览器）", "") || "";
-            if (t) {
-              try {
-                localStorage.setItem(key, t);
-              } catch (e) {}
-            }
+      function getCozePatToken() {
+        var key = "COZE_PAT_TOKEN";
+        var t = "";
+        try {
+          t = localStorage.getItem(key) || "";
+        } catch (e) {}
+        if (!t) {
+          t = window.prompt("请输入 Coze PAT Token（仅保存在本机浏览器）", "") || "";
+          if (t) {
+            try {
+              localStorage.setItem(key, t);
+            } catch (e) {}
           }
-          return t;
         }
-
-        function loadSdk(cb) {
-          if (window.CozeWebSDK) return cb();
-          if (loading) return;
-          loading = true;
-          var s = document.createElement("script");
-          s.src = SDK_SRC;
-          s.async = true;
-          s.onload = function () {
-            loading = false;
-            cb();
-          };
-          s.onerror = function () {
-            loading = false;
-          };
-          document.body.appendChild(s);
-        }
-
-        function initCoze(promptIfMissing) {
-          if (client) return;
-          var token = getToken(promptIfMissing);
-          if (!token) return;
-
-          loadSdk(function () {
-            if (!window.CozeWebSDK || client) return;
-            client = new CozeWebSDK.WebChatClient({
-              config: { bot_id: BOT_ID },
-              componentProps: { title: "Coze" },
-              auth: {
-                type: "token",
-                token: token,
-                onRefreshToken: function () {
-                  return getToken(true);
-                },
-              },
-            });
-          });
-        }
-
-        // 性能优化：如果本机已存 token，则自动加载；否则等用户点击“打开聊天”再加载。
-        initCoze(false);
-        document.addEventListener("click", function (e) {
-          var el = e.target && e.target.closest ? e.target.closest("[data-open-chat=\"1\"]") : null;
-          if (!el) return;
-          initCoze(true);
-        });
-      })();
+        return t;
+      }
+      function refreshCozePatToken() {
+        return getCozePatToken();
+      }
+      new CozeWebSDK.WebChatClient({
+        config: { bot_id: "7614511644510765066" },
+        componentProps: { title: "Coze" },
+        auth: { type: "token", token: getCozePatToken(), onRefreshToken: refreshCozePatToken },
+      });
     </script>
   </body>
 </html>
